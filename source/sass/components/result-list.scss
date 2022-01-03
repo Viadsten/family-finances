@@ -1,0 +1,58 @@
+.result-list {
+  margin: 0;
+
+  padding: 20px 0 20px;
+
+  font-family: $font-family--yanone;
+
+  list-style: none;
+
+  &__item {
+    margin: 10px 0;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 22px;
+    line-height: 26px;
+    font-family: $font-family--yanone;
+    color: $color-dark-green;
+  }
+
+  &__name {
+    margin-right: 10px;
+
+    &::after {
+      content: ":";
+      font-size: 22px;
+      line-height: 26px;
+      font-family: $font-family--yanone;
+      color: $color-dark-green;
+    }
+  }
+
+  &__price {
+    margin-left: auto;
+
+    &::after {
+      content: " ₽";
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 26px;
+      font-family: $font-family--yanone;
+      color: $color-dark-green;
+    }
+  }
+
+  &__item-del {
+    margin-left: 10px;
+
+    cursor: pointer;
+    border: none;
+    background-color: $color-transparent;
+
+    svg {
+      color: $color-light-green;
+    }
+  }
+}

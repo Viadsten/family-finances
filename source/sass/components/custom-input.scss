@@ -1,0 +1,14 @@
+.custom-input input {
+  border: none;
+  background-color: $color-transparent;
+  outline: none;
+  font-size: 22px;
+  line-height: 26px;
+  font-family: $font-family--yanone;
+  color: $color-dark-green;
+
+  &:active,
+  &:focus-visible {
+    border: none;
+  }
+}

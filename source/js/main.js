@@ -4,7 +4,11 @@
 import {iosVhFix} from './utils/ios-vh-fix';
 
 // import {initModals} from './modules/modals/init-modals';
-import {initFirebase} from './utils/firebase';
+import {select} from './modules/custom-select';
+import {initFirebase} from './modules/init-firebase';
+import {setBaseObserver} from './modules/api';
+import {initForm} from './modules/init-form';
+import {renderProductList} from './modules/list-presenter';
 
 // ---------------------------------
 
@@ -23,11 +27,12 @@ window.addEventListener('DOMContentLoaded', () => {
   // Modules
   // ---------------------------------
   initFirebase();
-
+  setBaseObserver(renderProductList);
   // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
   // в load следует добавить скрипты, не участвующие в работе первого экрана
   window.addEventListener('load', () => {
-
+    select.init();
+    initForm();
   });
 });
 

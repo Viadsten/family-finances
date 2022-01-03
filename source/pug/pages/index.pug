@@ -3,27 +3,25 @@ extends ../base/layout
 block variables
   - const title = "FamilyFinances" //- на страницах кроме главной используйте О нас — ProjectName
   - const wrapperMods = ""
-  - const hasHeader = true
+  - const hasHeader = false
   - const headerMods = ""
-  - const hasFooter = true
+  - const hasFooter = false
   - const footerMods = ""
   - const currentPage = "main" //- для остальных страниц пишем пустую строку или индекс активного headerLinks
 
 block main
   main
-    .container
-      //- Все данные должны выноситься в pug/data, привязываясь к бэм, а не к странице
-      //- т.е у вас будет pug/data/features.pug || intro.pug, а не main.pug || catalog.pug
-      p(style="margin-top: 40px;") Пример импорта из `pug/data`
-      h3!= heading.title
-      p= heading.description
-      p!= heading.description
-      p !{heading.description}
-      //- != и !{} позволяют html отрабатывать в pug, используйте их по умолчанию
-      //- варианты когда в тексте требуется отобразить <b>тест</b> тегами встречается редко
+    .app
+      .container
+        .page
+          ul.result-list
+          form.controlls.expenses-form
+            +custom-select({class: 'open-up', id: "id-example-1", label: "Категория", ariaLabel: "Выберите одну из опций", name: "name-example-1", error: "some-error", options: [{text: "Продукты", value: "id-1"}, {text: "Алкоголь", value: "id-2"}, {text: "Бытовые расходы", value: "id-3"}, {text: "Комуналка", value: "id-4"}, {text: "Доставка еды", value: "id-5"}]})
+            .controlls__row
+              .custom-input
+                input(type="number" placeholder="цена")
+              button.btn(type="submit")
+                img(src="img/content/cat-icon.png" width="30" height="30" alt='+')
 
-      p(style="margin-top: 40px;") Пример использования +img()
-      p(style="margin-bottom: 40px;")
-        +img("content", "placeholder", "png", 120, 120, "Пример")
 
 block modals

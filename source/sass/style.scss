@@ -21,7 +21,13 @@
 @import "blocks/main-nav";
 @import "blocks/footer";
 @import "blocks/modal";
+@import "blocks/controlls";
+@import "blocks/page";
 
+@import "components/custom-select";
+@import "components/custom-input";
+@import "components/result-list";
+@import "components/delete-btn";
 
 // используйте это для отключения ховеров на тач устройствах
 // ! но не используйте это для текстовых полей ( input, textarea )

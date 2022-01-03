@@ -1,0 +1,88 @@
+
+.delete-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+
+  &__del-icon,
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+    transition: opacity $trans--300;
+  }
+
+  &_circle {
+    width: 36px;
+    height: 36px;
+  }
+
+  &__del-icon svg {
+    width: 20px;
+    height: 18px;
+  }
+
+  &__circle circle {
+    fill: transparent;
+    stroke: $color-brown;
+    stroke-dasharray: 195;
+    stroke-dashoffset: 195;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    top: 8px;
+    left: 17px;
+
+    transform: rotate(45deg);
+
+    width: 2px;
+    height: 15px;
+
+    border-radius: 4px;
+    background-color: $color-light-green;
+    opacity: 0;
+
+    transition: opacity $trans--300;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+}
+
+.delete-btn.is-anim {
+  &::after,
+  &::before {
+    opacity: 1;
+  }
+
+  .delete-btn__del-icon {
+    opacity: 0;
+  }
+
+  .delete-btn__circle circle {
+    animation: animateCircle 3s linear forwards;
+  }
+}
+
+@keyframes animateCircle {
+  0% {
+    stroke-dashoffset: 195;
+  }
+
+  100% {
+    stroke-dashoffset: 99;
+  }
+}

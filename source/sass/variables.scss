@@ -11,7 +11,10 @@ $color-transparent:               rgba(255, 255, 255, 0);
 // Base
 
 $color-blue:                      #2c39f2;
-
+$color-cream:                     #fffff0;
+$color-light-green:               #b1bca0;
+$color-dark-green:                #3c4837;
+$color-brown:                     #b3b088;
 // Gradient
 
 $black-to-right:                    linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 75%);
@@ -20,6 +23,8 @@ $black-to-right:                    linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0
 //---------------------------------
 
 $font-family--placeholder:          "", "Arial", sans-serif;
+$font-family--yanone:          'Yanone Kaffeesatz', 'Raleway', sans-serif;
+
 
 // https://www.artlebedev.ru/kovodstvo/sections/159/
 $font-family--rouble:               "Rouble", "Arial", sans-serif;

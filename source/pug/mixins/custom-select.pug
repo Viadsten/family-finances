@@ -1,0 +1,25 @@
+mixin custom-select(options = {})
+  - var selectLabel = options.label ? options.label : false
+  - var selectError = options.error ? options.error : false
+  - var selectPlaceholder = options.placeholder ? options.placeholder : false
+  - var selectClass = options.class ? `custom-select ${options.class}` : "custom-select"
+  - var selectName = options.name ? options.name : false
+  - var selectMultiple = options.multiple ? "true" : false
+  - var selectId = options.id ? options.id : false
+  - var selectInsert = options.insert ? "true" : false
+  - var ariaLabel = options.ariaLabel ? options.ariaLabel : "Выберите одну из опций"
+
+  div(class=selectClass, data-select="", data-name=selectName, data-multiple=selectMultiple, data-id=selectId, data-insert=selectInsert)
+    if selectLabel
+      span.custom-select__label=options.label
+    if selectError
+      span.custom-select__error=options.error
+    if selectPlaceholder
+      span.custom-select__placeholder=options.placeholder
+    button.custom-select__button(type="button", aria-label=ariaLabel)
+      span.custom-select__text
+      span.custom-select__icon
+    ul.custom-select__list(role="listbox")
+      each option in options.options
+        - var ariaSelected = option.isActive ? "true" : "false"
+        li.custom-select__item(class=itemClass, tabindex="0", data-select-value=option.value, aria-selected=ariaSelected, role="option")=option.text
