@@ -792,10 +792,12 @@ body {
 .controlls {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 16px;
   margin-top: auto;
-  padding: 0 16px 15px;
-  width: 100%;
+  padding: 0 0 15px;
+  width: calc(100% - 32px);
+  border-top: 1px solid #b1bca0;
+  background-color: #fffff0;
 }
 
 .controlls .custom-select {
@@ -852,7 +854,11 @@ body {
 .custom-select__label {
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: 0;
+  font-size: 22px;
+  line-height: 26px;
+  font-family: "Yanone Kaffeesatz", "Raleway", sans-serif;
+  color: #3c4837;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
@@ -912,18 +918,18 @@ body {
 
 .custom-select__list {
   position: absolute;
+  left: -16px;
   bottom: 32px;
   z-index: 1;
-  width: 100%;
+  padding: 0 16px 1px;
+  width: calc(100% + 32px);
   max-height: calc(100vh - 100px);
   margin: 0;
-  padding: 0;
   overflow-y: auto;
   list-style: none;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #fffff0;
   border: none;
   border-top: 1px solid #b1bca0;
-  border-bottom: 1px solid #b1bca0;
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
   visibility: visible;
@@ -947,6 +953,10 @@ body {
   color: #3c4837;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
+}
+
+.custom-select__item:last-child {
+  border-bottom: 1px solid #b1bca0;
 }
 
 .custom-select__item[aria-selected='true']::before {
@@ -1002,7 +1012,7 @@ body {
 
 .custom-select.open-up .custom-select__list {
   bottom: auto;
-  top: 0;
+  top: 1px;
   -webkit-transform: translateY(calc(-100% + 0px));
   transform: translateY(calc(-100% + 0px));
   -webkit-clip-path: inset(100% 0 0 0);
@@ -1067,6 +1077,7 @@ body {
 }
 
 .custom-input input {
+  padding-left: 0;
   border: none;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
@@ -1083,7 +1094,7 @@ body {
 
 .result-list {
   margin: 0;
-  padding: 20px 0 20px;
+  padding: 20px 0 121px;
   font-family: "Yanone Kaffeesatz", "Raleway", sans-serif;
   list-style: none;
 }
@@ -1149,6 +1160,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 0;
   width: 36px;
   height: 36px;
 }
@@ -1188,8 +1200,8 @@ body {
 .delete-btn::before {
   position: absolute;
   content: "";
-  top: 8px;
-  left: 17px;
+  top: 7px;
+  right: 17px;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   width: 2px;

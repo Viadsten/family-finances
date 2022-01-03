@@ -1,12 +1,16 @@
 .controlls {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 16px;
 
   margin-top: auto;
 
-  padding: 0 16px 15px;
-  width: 100%;
+  padding: 0 0 15px;
+  width: calc(100% - 32px);
+
+  // box-shadow: 0px -17px 25px 11px rgba(34, 60, 80, 0.03);
+  border-top: 1px solid $color-light-green;
+  background-color: $color-cream;
 
   .custom-select {
     margin-bottom: 16px;

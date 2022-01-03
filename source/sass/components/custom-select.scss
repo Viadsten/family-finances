@@ -7,7 +7,12 @@
   &__label {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 0;
+
+    font-size: 22px;
+    line-height: 26px;
+    font-family: $font-family--yanone;
+    color: $color-dark-green;
 
     transform: translateY(-50%);
 
@@ -69,21 +74,22 @@
 
   &__list {
     position: absolute;
+    left: -16px;
     bottom: 32px;
     z-index: 1;
 
-    width: 100%;
+    padding: 0 16px 1px;
+    width: calc(100% + 32px);
     max-height: calc(100vh - 100px);
     margin: 0;
-    padding: 0;
     overflow-y: auto;
 
     list-style: none;
 
-    background-color: $color-transparent;
+    background-color: $color-cream;
     border: none;
     border-top: 1px solid $color-light-green;
-    border-bottom: 1px solid $color-light-green;
+    // border-bottom: 1px solid $color-light-green;
     transform: translateY(100%);
     visibility: visible;
     opacity: 1;
@@ -106,6 +112,10 @@
     color: $color-dark-green;
 
     transition: background-color $trans--300;
+
+    &:last-child {
+      border-bottom: 1px solid $color-light-green;
+    }
 
     &[aria-selected='true'] {
       &::before {
@@ -179,7 +189,7 @@
   &.open-up {
     .custom-select__list {
       bottom: auto;
-      top: 0;
+      top: 1px;
       transform: translateY(calc(-100% + 0px));
       clip-path: inset(100% 0 0 0);
     }
