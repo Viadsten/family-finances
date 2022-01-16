@@ -45,7 +45,7 @@
   }
 
   .custom-input input {
-    transition: margin $trans--300;
+    // transition: margin $trans--300;
     &:focus {
       @supports (-webkit-touch-callout: none) {
         margin-bottom: 40px;
