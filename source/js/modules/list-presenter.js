@@ -1,7 +1,5 @@
 import {removeFromData} from './api';
 
-const timeoutArr = [];
-
 const createItem = (list, item) => {
   const liTemplate = `
     <li class="result-list__item" data-uid="${item.uid}" data-path="${item.name}">
@@ -39,6 +37,7 @@ const createItemDay = (list, item) => {
   list.insertAdjacentHTML('afterbegin', liTemplate);
 };
 
+const timeoutArr = [];
 const removeItemAction = (e) => {
   const btn = e.target;
   const item = btn.closest('.result-list__item');
@@ -93,34 +92,20 @@ const dateСonversion = (date) => {
   return convertedDate;
 };
 
-const sortListDate = () => {
+const sortListDate = (productsList) => {
   productsList.sort((a, b) => {
     return new Date(2022, a.mounth, a.day, a.hours, a.min, a.sec) - new Date(2022, b.mounth, b.day, b.hours, b.min, b.sec);
   });
 };
 
-let productsList = [];
-const renderProductList = (val) => {
+const renderProductList = (productsList) => {
   const listNode = document.querySelector('.result-list');
-  listNode.innerHTML = '';
-  productsList = [];
+  const itemsNode = listNode.querySelectorAll('.result-list__item');
 
-  for (let key in val) {
-    if (Object.prototype.hasOwnProperty.call(val, key)) {
-      for (let items in val[key]) {
-        if (Object.prototype.hasOwnProperty.call(val, key)) {
-          const itemKey = val[key][items];
-          Object.assign(itemKey, {
-            name: key,
-            uid: items,
-          });
-          productsList.push(itemKey);
-        }
-      }
-    }
+  if (itemsNode.length) {
+    itemsNode.forEach((item) => item.remove());
   }
-
-  sortListDate();
+  sortListDate(productsList);
 
   productsList.forEach((item, i) => {
     createItem(listNode, item);

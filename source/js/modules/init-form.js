@@ -4,6 +4,7 @@ class Form {
   constructor(form) {
     this.form = form;
     this.select = form.querySelector('.custom-select');
+    this.selectPlaceholder = this.select.querySelector('.custom-select__text');
     this.input = form.querySelector('.custom-input input');
     this.submit = form.querySelector('.btn');
 
@@ -32,6 +33,14 @@ class Form {
       category: this.selectedItem.textContent,
       price: this.input.value,
     });
+
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.input.value = '';
+    this.selectPlaceholder.textContent = 'Категория';
+    this.selectedItem.ariaSelected = false;
   }
 }
 

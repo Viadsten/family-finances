@@ -17,11 +17,11 @@ block main
       .container
         .page
           .page__heading
-            p Потрачено за месяц
-            span.monthly_expenses 0
+            p Потрачено за месяц:
+            span.monthly-expenses 0
           ul.result-list
           form.controlls.expenses-form
-            +custom-select({class: 'open-up', id: "id-example-1", label: "Категория", ariaLabel: "Выберите одну из опций", name: "name-example-1", error: "some-error", options: [{text: "Продукты", value: "id-1"}, {text: "Еда вне дома", value: "id-8"}, {text: "Такси", value: "id-9"}, {text: "Алкоголь", value: "id-2"}, {text: "Бытовые расходы", value: "id-3"}, {text: "Комуналка", value: "id-4"}, {text: "Доставка еды", value: "id-5"}]})
+            +custom-select({class: 'open-up', id: "id-example-1", label: "Категория", ariaLabel: "Выберите одну из опций", name: "name-example-1", error: "some-error", options: [{text: "Продукты", value: "id-1"}, {text: "Еда вне дома", value: "id-8"}, {text: "Такси", value: "id-9"}, {text: "Алкоголь", value: "id-2"}, {text: "Бытовые расходы", value: "id-3"}, {text: "Комуналка", value: "id-4"}, {text: "Доставка еды", value: "id-5"}, {text: "Аптека", value: "id-16"}]})
             .controlls__row
               .custom-input
                 input(type="number" placeholder="цена")
