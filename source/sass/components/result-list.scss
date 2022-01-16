@@ -55,4 +55,64 @@
       color: $color-light-green;
     }
   }
+
+  &__data {
+    margin: 0 0 -10px 0;
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &::before {
+      margin-left: -5px;
+      content: "";
+      display: block;
+      width: 10px;
+      height: 1px;
+
+      background-color: $color-light-green;
+      opacity: 0.9;
+    }
+
+    p {
+      margin: 0 3px;
+
+      width: auto;
+
+      font-size: 16px;
+      font-weight: 500;
+      color: $color-brown;
+
+
+    }
+
+    &::after {
+      // content: "";
+      // display: block;
+      // width: 100%;
+      // height: 1px;
+
+      // background-color: $color-light-green;
+      // opacity: 0.4;
+    }
+
+    // spran {
+    //   display: block;
+    //   width: 100%;
+    //   height: 1px;
+
+    //   backgound-color: $color-light-green;
+    // }
+  }
+
+  &__item--date {
+    margin: 0 0 -10px;
+
+    p {
+      margin: 0;
+
+      font-size: 18px;
+      color: $color-brown;
+    }
+  }
 }

@@ -23,7 +23,8 @@ const addNewData = (data) => {
     sec: date.getSeconds(),
     min: date.getMinutes(),
     hours: date.getHours(),
-    day: date.getDay(),
+    day: date.getDate(),
+    weekDay: date.getDay(),
     mounth: date.getMonth(),
   };
 

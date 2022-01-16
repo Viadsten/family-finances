@@ -2,6 +2,43 @@ import {removeFromData} from './api';
 
 const timeoutArr = [];
 
+const createItem = (list, item) => {
+  const liTemplate = `
+    <li class="result-list__item" data-uid="${item.uid}" data-path="${item.name}">
+      <span class="result-list__name">${item.name}</span>
+      <span class="result-list__price">${item.price}</span>
+      <button class="result-list__item-del delete-btn" type="button">
+        <span class="delete-btn__del-icon">
+          <svg width="30" height="30" aria-hidden="true">
+            <use xlink:href="#delete"></use>
+          </svg>
+        </span>
+        <span class="delete-btn__circle">
+          <svg viewBox="0 0 36 36" width="39" height="39">
+            <circle class="btn__animated-circle" cx="-18" cy="18" r="15.5" transform="rotate(-90)"></circle>
+          </svg>
+        </span>
+      </button>
+    </li>`;
+
+  list.insertAdjacentHTML('afterbegin', liTemplate);
+  addItemEvents(list.firstChild.nextSibling);
+};
+
+const createItemDay = (list, item) => {
+  const date = dateСonversion({
+    day: item.day,
+    mounth: item.mounth,
+  });
+
+  const liTemplate = `
+    <li class="result-list__item result-list__item--date">
+      <p>${date}</p>
+    </li>`;
+
+  list.insertAdjacentHTML('afterbegin', liTemplate);
+};
+
 const removeItemAction = (e) => {
   const btn = e.target;
   const item = btn.closest('.result-list__item');
@@ -34,27 +71,26 @@ const addItemEvents = (item) => {
   remove.addEventListener('click', removeItemAction);
 };
 
-const createItem = (list, item) => {
-  const liTemplate = `
-    <li class="result-list__item" data-uid="${item.uid}" data-path="${item.name}">
-      <span class="result-list__name">${item.name}</span>
-      <span class="result-list__price">${item.price}</span>
-      <button class="result-list__item-del delete-btn" type="button">
-        <span class="delete-btn__del-icon">
-          <svg width="30" height="30" aria-hidden="true">
-            <use xlink:href="#delete"></use>
-          </svg>
-        </span>
-        <span class="delete-btn__circle">
-          <svg viewBox="0 0 36 36" width="39" height="39">
-            <circle class="btn__animated-circle" cx="-18" cy="18" r="15.5" transform="rotate(-90)"></circle>
-          </svg>
-        </span>
-      </button>
-    </li>`;
+const twoDigitNum = (num) => {
+  return (
+    String(num).length === 1
+      ? 0 + String(num)
+      : num);
+};
 
-  list.insertAdjacentHTML('afterbegin', liTemplate);
-  addItemEvents(list.firstChild.nextSibling);
+const dateСonversion = (date) => {
+  const now = new Date();
+  let convertedDate;
+
+  if (date.day === now.getDate() && date.mounth === now.getMonth()) {
+    convertedDate = 'Сегодня';
+  } else if (date.day + 1 === now.getDate() && date.mounth === now.getMonth()) {
+    convertedDate = 'Вчера';
+  } else {
+    convertedDate = `${twoDigitNum(date.day) + '.' + twoDigitNum(date.mounth + 1) + '.2022'}`;
+  }
+
+  return convertedDate;
 };
 
 const sortListDate = () => {
@@ -86,8 +122,16 @@ const renderProductList = (val) => {
 
   sortListDate();
 
-  productsList.forEach((item) => {
+  productsList.forEach((item, i) => {
     createItem(listNode, item);
+
+    if (i !== productsList.length - 1) {
+      if (item.day !== productsList[i + 1].day) {
+        createItemDay(listNode, item);
+      }
+    } else {
+      createItemDay(listNode, item);
+    }
   });
 };
 
